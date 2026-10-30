@@ -1,0 +1,15 @@
+{
+  "entities": [
+    "esp_buttonadvancedsetting",
+    "esp_buttonsetting",
+    "esp_language"
+  ],
+  "actions": [],
+  "functions": [],
+  "generateIndex": true,
+  "generateFormContext": false,
+  "generateEntityTypes": true,
+  "output": {
+    "outputRoot": "./src/dataverse-gen"
+  }
+}

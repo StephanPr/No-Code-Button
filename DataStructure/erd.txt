@@ -1,0 +1,55 @@
+Table esp_language {
+  esp_languageid id [primary key]
+  esp_lcid string [primary key]
+  esp_language string
+  esp_bcp47code string [note: 'Implemented until here']
+}
+
+Table esp_buttonsetting {
+  esp_buttonsettingid id [primary key]
+  esp_name string
+  esp_buttonlocation choice
+  esp_endpoint string
+  esp_includecallinguseridinpayload bool
+  esp_includeentitylogicalnameinpayload bool
+  esp_includerecordidinpayload bool [note: 'Implemented until here']
+  esp_savebeforerunning bool [not null, default: true]
+  esp_refreshwhenapicallends bool [not null, default: false]
+}
+
+Table esp_buttonadvancedsetting {
+  esp_buttonadvancedsettingid id [primary key]
+  esp_settingid autonumber
+  esp_settinglanguage id
+  esp_mainbuttonsetting id
+  esp_showconfirmationdialog bool
+  esp_executionmode choice [note: 'Sync or Async', default: null, not null]
+  esp_confirmationdialogtitle string
+  esp_confirmationdialogsubtitle string
+  esp_confirmationdialogtext string [not null]
+  esp_confirmationdialogconfirmlabel string
+  esp_confirmationdialogcancellabel string
+  esp_asyncformnotification bool [not null, default: true]
+  esp_asyncformnotificationtext string
+  esp_syncformnotification bool [not null, default: false]
+  esp_syncformnotificationtext string
+  esp_syncspinner bool [not null, default: true]
+  esp_syncspinnertext string [null]
+  esp_syncsuccessformnotification bool [default: true]
+  esp_syncsuccessformnotificationtext string
+  esp_syncconfirmationbox bool [default: false]
+  esp_syncconfirmationboxtitle string
+  esp_syncconfirmationboxtext string [not null]
+  esp_syncconfirmationboxconfirmlabel string
+  esp_syncconfirmationboxredirect bool [default: false]
+  esp_syncconfirmationboxredirecttitle string
+  esp_syncconfirmationboxredirectsubtitle string
+  esp_syncconfirmationboxredirecttext string [not null]
+  esp_syncconfirmationboxredirectconfirmlabel string
+  esp_syncconfirmationboxredirectcancellabel string
+  esp_syncconfirmationboxredirectmode choice [not null, note: 'Current tab or New tab', default: 'New tab']
+  }
+
+Ref ConfigLanguage: esp_buttonadvancedsetting.esp_settinglanguage < esp_language.esp_languageid
+
+Ref AdvancedConfigOf: esp_buttonadvancedsetting.esp_mainbuttonsetting < esp_buttonsetting.esp_buttonsettingid
