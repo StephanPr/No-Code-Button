@@ -1,0 +1,87 @@
+                            NOTICE
+              No-Code Button (NCB) and Low Code Button (LCB)
+
+Copyright 2025-2026 The Low Code Button authors
+Copyright 2026 The No-Code Button authors
+
+This product includes software originally developed as Low Code Button (LCB), a free,
+community Dynamics 365 / Power Apps tool that turns a command bar or ribbon button into an
+HTTPS call to a Power Automate flow. The original development ran from 2025-03-18 to
+2025-04-04 (61 commits, tag "Releases"); documentation was updated as late as 2026-07-14.
+The authorship record taken from that original history is preserved in the project's
+private archive; this repository carries the attribution names in CONTRIBUTORS.md.
+
+Low Code Button was created and developed jointly by the two people named in its published
+documentation (readme.md, section Support, and the author field of package.json,
+"José Martínez Lago & SCN"):
+
+  José Martínez Lago   https://www.linkedin.com/in/martinezlago/
+
+  Stephan Charles      https://www.linkedin.com/in/stephan-charles-nielson/
+
+Both original developers are jointly involved in the No-Code Button remake and have decided
+to release this work under the Apache License, Version 2.0. Earlier documentation of Low Code
+Button stated the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 (CC BY-NC-SA 4.0)
+license while package.json declared ISC; both statements are superseded by this notice as of
+2026-10-30, and the non-commercial restriction no longer applies to this work.
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file
+except in compliance with the License. You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the
+License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+either express or implied. See the License for the specific language governing permissions and
+limitations under the License.
+
+Authorship and attribution
+--------------------------
+CONTRIBUTORS.md in this repository names the people who wrote Low Code Button and No-Code
+Button and states what the published history can and cannot prove about them. There is no
+contributor license agreement, no DCO and no copyright assignment for this project, and no
+source file carries a per-file copyright header, so those statements describe authorship and
+are not a transfer of copyright. When redistributing this work or a derivative of it, keep
+this NOTICE file together with the LICENSE file and keep the attribution in CONTRIBUTORS.md,
+as required by Section 4 of the Apache License, Version 2.0.
+
+Third-party components
+----------------------
+The three JavaScript web resources shipped in dist/ are generated from the TypeScript in src/
+and contain no third-party source code: every npm dependency is compile-time, type-only or
+build-time, and none of them is inlined into the bundles a customer installs. The product ships
+no npm package, no CLI and no node_modules directory.
+
+  MIT:        dataverse-auth, dataverse-ify, dataverse-gen, @types/xrm, webpack, webpack-cli,
+              webpack-merge, ts-loader, eslint, eslint-config-prettier, eslint-plugin-prettier,
+              eslint-plugin-react, @typescript-eslint/parser,
+              @typescript-eslint/eslint-plugin, prettier, vitest
+  Apache-2.0: the TypeScript compiler used by the build
+
+Those are the license fields of the 16 declared dependencies as installed, read from their own
+package.json files. Both licenses permit distributing this project under Apache-2.0, and
+neither adds a notice obligation for the shipped bundles.
+
+The transitive dev-time tree (533 package.json files under node_modules/, audited 2026-10-30)
+is predominantly MIT, ISC, BSD-2-Clause, BSD-3-Clause, 0BSD and Apache-2.0. Four entries fall
+outside that group and are recorded here so that vendoring one of them, or shipping
+node_modules, stays a deliberate decision rather than an accident: caniuse-lite (CC-BY-4.0, an
+attribution-licensed browser-support dataset), eslint-plugin-sonarjs (LGPL-3.0), lightningcss
+and its platform twin lightningcss-linux-x64-gnu (MPL-2.0), and argparse (Python-2.0). Each is
+reached only through a dev dependency - linting, browser data or CSS tooling - and none of them
+reaches a shipped artefact, so no additional notice is required for the web resources. Re-run
+this audit if a runtime dependency is ever added.
+
+DataStructure/Supported LCID List from Microsoft as per 28.03.2025.xlsx is reference
+documentation authored by Microsoft, not a work of the authors above. It is kept in this
+repository as a maintainer reference, it is NOT covered by the Apache License 2.0, and the
+redistribution terms of the Microsoft source it came from were not verified: check them, or
+remove or replace that file, before redistributing this repository outside the project. The
+screenshots referenced from readme.md are GitHub user-attachment URLs that appear to be
+project-owned captures of the user interface of this product; no third-party licensing was
+found for them, and that assumption is worth re-confirming before a redistribution.
+
+The managed solution (web resources, tables, forms, views, site map and security roles) is
+assembled by hand inside a Dataverse environment from this source. Its components carry this
+license and this notice as a unit with the code inside them; packaging it as a solution is not
+a separate licensing decision.

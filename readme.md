@@ -23,7 +23,7 @@ Watch the demo [here](https://youtu.be/fgtiu2bTYZk).
 
 ### Download and Import
 
-1. **Download the latest managed solution** from the [releases section](https://github.com/LagoESP/LowCodeButton/releases).
+1. **Download the latest managed solution** from the [releases section](https://github.com/StephanPr/No-Code-Button/releases).
 
 2. **Import the solution** into Dynamics 365:
 
@@ -237,13 +237,51 @@ Contributions are welcome:
 
 ## License
 
-Licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike (CC BY-NC-SA) License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+No-Code Button, and the Low Code Button code it continues, is licensed under the
+[Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). The full text is in
+[LICENSE](LICENSE); the attribution that must be preserved when you redistribute it is in
+[NOTICE](NOTICE).
 
-**Why this license?**
+You may use this software for personal and commercial purposes, modify it, redistribute it and
+incorporate it into proprietary projects, subject to the standard conditions of that license -
+chiefly that you keep the copyright, license and attribution notices (including `NOTICE`) intact,
+that you state your changes, and that the license grants no right to use project names or logos to
+imply endorsement.
 
-1. **Public Accessibility:** Allows the Dynamics 365 community free access and usage.
-2. **Professional Usage:** Companies can freely incorporate it into their internal solutions, but cannot commercialize it separately as a paid addon.
-3. **Modification and Redistribution:** Others can modify and redistribute the solution freely, provided they attribute the original work and do not commercialize it.
+## History and attribution
+
+**No-Code Button (NCB)** is the continuation of **Low Code Button (LCB)**. LCB was created and
+developed in 2025 by [José Martínez Lago](https://www.linkedin.com/in/martinezlago/) and
+[Stephan Charles](https://www.linkedin.com/in/stephan-charles-nielson/); both original developers are
+jointly behind the remake and agreed to this relicensing.
+
+The Low Code Button names stay in the product on purpose. The web resources
+(`LowCodeButtonBase.js`, `LowCodeButtonSetting.js`, `LowCodeButtonAdvancedSetting.js`), the `LCB`
+global, the `esp_*` tables and the command `LCB.ButtonRegistration.onClick` are referenced verbatim
+by installations that already exist, so renaming them is a separate, planned change with its own
+migration notes. Where this documentation says "Low Code Button" or "LCB" it refers to this same
+product under its original name.
+
+Earlier versions of this documentation stated the
+[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+license, while `package.json` declared ISC. Neither is in force any more: on 2026-10-30 the original
+developers relicensed the work to Apache License 2.0, which lifts the non-commercial restriction. If
+you installed the solution under the earlier terms nothing needs re-approval - Apache 2.0 grants
+strictly more than CC BY-NC-SA allowed, and what it asks in return is attribution through
+`NOTICE` rather than a non-commercial clause.
+
+Authorship of the original project is preserved in [CONTRIBUTORS.md](CONTRIBUTORS.md), because the
+public history of this repository starts from a snapshot commit and does not contain the original
+commits.
+
+### Third-party terms worth knowing
+
+| Component | License | Note |
+|---|---|---|
+| npm dependencies (webpack, TypeScript, ESLint, Prettier, vitest, dataverse-gen and friends) | MIT, except the TypeScript compiler (Apache-2.0) | Compile-time or build-time only. Nothing from `node_modules` is inlined into the three shipped web resources, so no third-party code reaches a customer environment. The transitive dev-time tree adds a few other permissive licenses (caniuse-lite CC-BY-4.0, eslint-plugin-sonarjs LGPL-3.0, lightningcss MPL-2.0, argparse Python-2.0); none of them reaches a shipped artefact - see NOTICE. |
+| `DataStructure/Supported LCID List from Microsoft as per 28.03.2025.xlsx` | Microsoft reference documentation | Not a work of this project and **not** covered by Apache-2.0; its redistribution terms were not re-checked for this relicensing. Remove or replace it before redistributing this repository if you are unsure. |
+| Screenshots referenced from this documentation | Assumed project-owned | GitHub user-attachment captures of the user interface of this product; no separate license was found for them, and that assumption is worth confirming before a redistribution. |
+| Dynamics 365, Power Apps, Dataverse, Power Automate | Microsoft products | Their own terms govern the platform. This is a community tool, not a Microsoft offering. |
 
 ---
 
