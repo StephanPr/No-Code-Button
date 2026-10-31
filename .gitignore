@@ -1,3 +1,17 @@
 node_modules
 dvdt.linker.xml
 .vscode/settings.json
+
+# Local agent tooling: useful on a maintainer's machine, never part of the published project.
+AGENTS.md
+.clinerules/
+.cline/
+.agent-state/
+
+# Internal working material of the recovery pass, kept in the project's private archive:
+# temporary reports, environment evidence and the exported solution fragments.
+docs/recovery/
+docs/agent-handoff.md
+Screenshots/
+Incomplete extraction from managed solution/
+
