@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import { esp_ButtonAdvancedSetting, esp_ButtonSetting } from "../dataverse-gen";
 import { ExceptionNoCodeButton } from "../Exceptions/ButtonException";
+import { FetchXmlEscape } from "./FetchXmlEscape";
 
 export type ButtonContainerType = "form" | "grid" | "subgrid";
 
@@ -96,11 +97,13 @@ export class BaseHelper {
   /**
    * Retrieves the button setting record using the provided button setting name.
    *
-   * @param buttonSettingName - The name of the button setting to retrieve.
+   * @param buttonSettingName - The name of the button setting to retrieve. It is XML-escaped for the
+   * query and otherwise used exactly as the maker stored it.
    * @returns A Promise that resolves to the esp_ButtonSetting or null.
    * @throws An error if the fetch fails.
    */
   public async getButtonSetting(buttonSettingName: string): Promise<esp_ButtonSetting | null> {
+    const escapedButtonName = FetchXmlEscape.escapeAttributeValue(buttonSettingName);
     const fetchXml = `
       <fetch top="1">
         <entity name="esp_buttonsetting">
@@ -114,7 +117,7 @@ export class BaseHelper {
           <attribute name="esp_savebeforerunning" />
           <attribute name="esp_refreshwhenapicallends" />
           <filter type="and">
-            <condition attribute="esp_buttonname" operator="eq" value="${buttonSettingName}" />
+            <condition attribute="esp_buttonname" operator="eq" value="${escapedButtonName}" />
           </filter>
         </entity>
       </fetch>
@@ -353,7 +356,11 @@ export class BaseHelper {
     );
 
     const filter = allButtonAdvancedSettings.map((setting) => {
-      return `<condition attribute="esp_languageid" operator="ne" value="${setting._esp_settinglanguage_value}" />`;
+      // The generated entity type inherits IEntity's index signature, so this lookup id is typed `any`.
+      // String() reproduces what the template used to interpolate when the id is missing, rather than
+      // turning that configuration gap into a crash on the settings form.
+      const escapedLanguageId = FetchXmlEscape.escapeAttributeValue(String(setting._esp_settinglanguage_value));
+      return `<condition attribute="esp_languageid" operator="ne" value="${escapedLanguageId}" />`;
     });
 
     return "<filter type='and'>" + filter.join("") + "</filter>";
