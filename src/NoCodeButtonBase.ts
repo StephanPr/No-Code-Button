@@ -1,16 +1,16 @@
-import { ButtonRegistrationForm } from "./Base_Cases/LowCodeButtonFormBase";
+import { ButtonRegistrationForm } from "./Base_Cases/NoCodeButtonFormBase";
 import { BaseHelper } from "./Helpers/BaseHelper";
-import { ExceptionLowCodeButton } from "./Exceptions/ButtonException";
-import { ButtonRegistrationGrid } from "./Base_Cases/LowCodeButtonGridBase";
+import { ExceptionNoCodeButton } from "./Exceptions/ButtonException";
+import { ButtonRegistrationGrid } from "./Base_Cases/NoCodeButtonGridBase";
 
 export class ButtonRegistration {
   static onClick(context: Xrm.FormContext | Xrm.Controls.GridControl, buttonSettingName: string) {
     if (!context) {
-      ExceptionLowCodeButton.displayGenericErrorNotification("Registration Error", "No context provided");
+      ExceptionNoCodeButton.displayGenericErrorNotification("Registration Error", "No context provided");
       return;
     }
     if (!buttonSettingName) {
-      ExceptionLowCodeButton.displayGenericErrorNotification("Registration Error", "No button setting name provided");
+      ExceptionNoCodeButton.displayGenericErrorNotification("Registration Error", "No button setting name provided");
       return;
     }
     const baseHelper = new BaseHelper();

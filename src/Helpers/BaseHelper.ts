@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import { esp_ButtonAdvancedSetting, esp_ButtonSetting } from "../dataverse-gen";
-import { ExceptionLowCodeButton } from "../Exceptions/ButtonException";
+import { ExceptionNoCodeButton } from "../Exceptions/ButtonException";
 
 export type ButtonContainerType = "form" | "grid" | "subgrid";
 
@@ -129,7 +129,7 @@ export class BaseHelper {
       this.buttonSetting = setting;
       return setting;
     } catch {
-      ExceptionLowCodeButton.buttonSettingNotFound(buttonSettingName);
+      ExceptionNoCodeButton.buttonSettingNotFound(buttonSettingName);
       return null;
     }
   }
@@ -201,7 +201,7 @@ export class BaseHelper {
       this.buttonAdvancedSetting = advancedSetting;
       return advancedSetting;
     } catch {
-      ExceptionLowCodeButton.buttonAdvancedSettingNotFound(lcid);
+      ExceptionNoCodeButton.buttonAdvancedSettingNotFound(lcid);
       return null;
     }
   }
@@ -263,7 +263,7 @@ export class BaseHelper {
       const data = await response.json();
       return data.value as esp_ButtonAdvancedSetting[];
     } catch {
-      ExceptionLowCodeButton.displayGenericErrorNotification(
+      ExceptionNoCodeButton.displayGenericErrorNotification(
         "Error",
         "Error while fetching the advanced button settings except the given LCID. Function name: getAllButtonAdvancedSettingExceptTheGivenLCID",
       );
@@ -332,7 +332,7 @@ export class BaseHelper {
       const data = await response.json();
       return data.value as esp_ButtonAdvancedSetting[];
     } catch {
-      ExceptionLowCodeButton.displayGenericErrorNotification(
+      ExceptionNoCodeButton.displayGenericErrorNotification(
         "Error",
         "Error while fetching the advanced button settings except the given LCID. Function name: getAllButtonAdvancedSettingExceptTheGivenLCID",
       );

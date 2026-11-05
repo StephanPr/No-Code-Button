@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { ButtonRegistrationGrid } from "../src/Base_Cases/LowCodeButtonGridBase";
+import { ButtonRegistrationGrid } from "../src/Base_Cases/NoCodeButtonGridBase";
 import { ButtonGridHelper } from "../src/Helpers/ButtonGridHelper";
 import { buildAdvancedSetting, buildButtonSetting, buildGridControl, installXrmStub, type XrmSpy } from "./support/xrm-stub";
 

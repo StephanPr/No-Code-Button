@@ -1,4 +1,4 @@
-export class ExceptionLowCodeButton {
+export class ExceptionNoCodeButton {
   static async buttonSettingNotFound(buttonSettingName: string) {
     const errorStrings = {
       text: `Button setting not found: ${buttonSettingName}`,

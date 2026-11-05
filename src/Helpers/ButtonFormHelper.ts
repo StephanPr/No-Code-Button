@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import { esp_buttonadvancedsetting_esp_buttonadvancedsetting_esp_syncconfirmationboxredirectmode } from "../dataverse-gen";
-import { ExceptionLowCodeButton } from "../Exceptions/ButtonException";
+import { ExceptionNoCodeButton } from "../Exceptions/ButtonException";
 import { RedirectResponse } from "../Models/BaseButtonResponseModels";
 import { BaseHelper } from "./BaseHelper"; // Adjust path as needed
 
@@ -93,7 +93,7 @@ export class ButtonFormHelper extends BaseHelper {
    */
   public async openConfirmationDialogBeforeRun(): Promise<boolean> {
     if (!this.buttonAdvancedSetting || this.buttonAdvancedSetting.esp_confirmationdialogtext == null) {
-      await ExceptionLowCodeButton.displayGenericErrorNotification(
+      await ExceptionNoCodeButton.displayGenericErrorNotification(
         "Confirmation Dialog Text Error",
         "The confirmation dialog text is empty! Please fill it on your configuration settings.",
       );
@@ -117,7 +117,7 @@ export class ButtonFormHelper extends BaseHelper {
    */
   public async openSuccessDialogSync(): Promise<boolean> {
     if (!this.buttonAdvancedSetting || this.buttonAdvancedSetting.esp_syncconfirmationboxtext == null) {
-      await ExceptionLowCodeButton.displayGenericErrorNotification(
+      await ExceptionNoCodeButton.displayGenericErrorNotification(
         "Sync Confirmation Box Text Error",
         "The sync confirmation box text is empty! Please fill it on your configuration settings.",
       );
@@ -143,7 +143,7 @@ export class ButtonFormHelper extends BaseHelper {
       throw new Error("Button advanced setting is not set.");
     }
     if (this.buttonAdvancedSetting.esp_syncconfirmationboxredirecttext == null) {
-      ExceptionLowCodeButton.displayGenericErrorNotification(
+      ExceptionNoCodeButton.displayGenericErrorNotification(
         "Sync Confirmation Box Redirect Text Error",
         "The sync confirmation box redirect text is empty! Please fill it on your configuration settings.",
       );
@@ -206,7 +206,7 @@ export class ButtonFormHelper extends BaseHelper {
       !this.buttonAdvancedSetting ||
       this.buttonAdvancedSetting.esp_asyncformnotificationtext == null
     ) {
-      await ExceptionLowCodeButton.displayGenericErrorNotification(
+      await ExceptionNoCodeButton.displayGenericErrorNotification(
         "Async Form Notification Text Error",
         "The async form notification text is empty! Please fill it on your configuration settings.",
       );
@@ -215,10 +215,10 @@ export class ButtonFormHelper extends BaseHelper {
     this.formContext.ui.setFormNotification(
       this.buttonAdvancedSetting.esp_asyncformnotificationtext,
       "INFO",
-      "LowCodeButtonFormNotification",
+      "NoCodeButtonFormNotification",
     );
     setTimeout(() => {
-      this.formContext!.ui.clearFormNotification("LowCodeButtonFormNotification");
+      this.formContext!.ui.clearFormNotification("NoCodeButtonFormNotification");
     }, 5000);
   }
 
@@ -231,7 +231,7 @@ export class ButtonFormHelper extends BaseHelper {
     if (!this.formContext) {
       throw new Error("Form context is not set.");
     }
-    this.formContext.ui.clearFormNotification("LowCodeButtonFormNotification");
+    this.formContext.ui.clearFormNotification("NoCodeButtonFormNotification");
   }
 
   /**
@@ -245,7 +245,7 @@ export class ButtonFormHelper extends BaseHelper {
       !this.buttonAdvancedSetting ||
       this.buttonAdvancedSetting.esp_syncformnotificationtext == null
     ) {
-      await ExceptionLowCodeButton.displayGenericErrorNotification(
+      await ExceptionNoCodeButton.displayGenericErrorNotification(
         "Sync Form Notification Text Error",
         "The sync form notification text is empty! Please fill it on your configuration settings.",
       );
@@ -254,10 +254,10 @@ export class ButtonFormHelper extends BaseHelper {
     this.formContext.ui.setFormNotification(
       this.buttonAdvancedSetting.esp_syncformnotificationtext,
       "INFO",
-      "LowCodeButtonFormNotification",
+      "NoCodeButtonFormNotification",
     );
     setTimeout(() => {
-      this.formContext!.ui.clearFormNotification("LowCodeButtonFormNotification");
+      this.formContext!.ui.clearFormNotification("NoCodeButtonFormNotification");
     }, 120000);
   }
 
@@ -272,7 +272,7 @@ export class ButtonFormHelper extends BaseHelper {
       !this.buttonAdvancedSetting ||
       this.buttonAdvancedSetting.esp_syncsuccessformnotificationtext == null
     ) {
-      await ExceptionLowCodeButton.displayGenericErrorNotification(
+      await ExceptionNoCodeButton.displayGenericErrorNotification(
         "Success Notification Text Error",
         "The success notification text is empty! Please fill it on your configuration settings.\nField: esp_syncsuccessformnotificationtext",
       );
@@ -281,10 +281,10 @@ export class ButtonFormHelper extends BaseHelper {
     this.formContext.ui.setFormNotification(
       this.buttonAdvancedSetting.esp_syncsuccessformnotificationtext,
       "INFO",
-      "LowCodeButtonFormNotification",
+      "NoCodeButtonFormNotification",
     );
     setTimeout(() => {
-      this.formContext!.ui.clearFormNotification("LowCodeButtonFormNotification");
+      this.formContext!.ui.clearFormNotification("NoCodeButtonFormNotification");
     }, 5000);
   }
 

@@ -1,4 +1,4 @@
-import { ExceptionLowCodeButton } from "../Exceptions/ButtonException";
+import { ExceptionNoCodeButton } from "../Exceptions/ButtonException";
 
 /**
  * RedirectResponse encapsulates a redirect URI.
@@ -27,7 +27,7 @@ export class RedirectResponse {
   static fromJson(json: string): RedirectResponse {
     const data = JSON.parse(json);
     if (typeof data.redirectUri !== "string") {
-      ExceptionLowCodeButton.displayGenericErrorNotification(
+      ExceptionNoCodeButton.displayGenericErrorNotification(
         "Redirect URI Not Found",
         "The redirect URI was not found in the response.",
       );
@@ -68,7 +68,7 @@ export class ErrorMessageResponse {
     const data = JSON.parse(json);
     console.log("Error message data", data);
     if (typeof data.message !== "string") {
-      ExceptionLowCodeButton.displayGenericErrorNotification(
+      ExceptionNoCodeButton.displayGenericErrorNotification(
         "Error Message Not Found",
         "The error message was not found in the response.",
       );

@@ -3,7 +3,7 @@ import {
   esp_buttonadvancedsetting_esp_buttonadvancedsetting_esp_syncconfirmationboxredirectmode,
   esp_buttonsetting_esp_buttonsetting_esp_buttonlocation,
 } from "../dataverse-gen";
-import { ExceptionLowCodeButton } from "../Exceptions/ButtonException";
+import { ExceptionNoCodeButton } from "../Exceptions/ButtonException";
 import { RedirectResponse } from "../Models/BaseButtonResponseModels";
 import { BaseHelper } from "./BaseHelper";
 
@@ -55,7 +55,7 @@ export class ButtonGridHelper extends BaseHelper {
   /**
    * Validates that at least one record is selected in the grid.
    * @returns A Promise that resolves if selection is valid.
-   * @throws ExceptionLowCodeButton if no records are selected.
+   * @throws ExceptionNoCodeButton if no records are selected.
    */
   public async validateSelection(): Promise<boolean | void> {
     if (!this.gridControl) {
@@ -63,7 +63,7 @@ export class ButtonGridHelper extends BaseHelper {
     }
     const selectedRows = this.gridControl.getGrid().getSelectedRows();
     if (selectedRows.getLength() === 0) {
-      void ExceptionLowCodeButton.displayGenericErrorNotification(
+      void ExceptionNoCodeButton.displayGenericErrorNotification(
         "No Records selected",
         "No records selected. Please select at least one record.",
       );
@@ -125,7 +125,7 @@ export class ButtonGridHelper extends BaseHelper {
    */
   public async openConfirmationDialogBeforeRun(): Promise<boolean> {
     if (!this.buttonAdvancedSetting || this.buttonAdvancedSetting.esp_confirmationdialogtext == null) {
-      await ExceptionLowCodeButton.displayGenericErrorNotification(
+      await ExceptionNoCodeButton.displayGenericErrorNotification(
         "Confirmation Dialog Text Error",
         "The confirmation dialog text is empty! Please fill it on your configuration settings.",
       );
@@ -148,7 +148,7 @@ export class ButtonGridHelper extends BaseHelper {
    */
   public async asyncGridNotification(): Promise<void> {
     if (!this.buttonAdvancedSetting || this.buttonAdvancedSetting.esp_asyncformnotificationtext == null) {
-      await ExceptionLowCodeButton.displayGenericErrorNotification(
+      await ExceptionNoCodeButton.displayGenericErrorNotification(
         "Async Grid Notification Text Error",
         "The async grid notification text is empty! Please fill it on your configuration settings.",
       );
@@ -185,7 +185,7 @@ export class ButtonGridHelper extends BaseHelper {
    */
   public async syncGridNotification(): Promise<void> {
     if (!this.buttonAdvancedSetting || this.buttonAdvancedSetting.esp_syncformnotificationtext == null) {
-      await ExceptionLowCodeButton.displayGenericErrorNotification(
+      await ExceptionNoCodeButton.displayGenericErrorNotification(
         "Sync Grid Notification Text Error",
         "The sync grid notification text is empty! Please fill it on your configuration settings.",
       );
@@ -227,7 +227,7 @@ export class ButtonGridHelper extends BaseHelper {
       !this.buttonAdvancedSetting ||
       this.buttonAdvancedSetting.esp_syncsuccessformnotificationtext == null
     ) {
-      await ExceptionLowCodeButton.displayGenericErrorNotification(
+      await ExceptionNoCodeButton.displayGenericErrorNotification(
         "Success Notification Text Error",
         "The success notification text is empty! Please fill it on your configuration settings.\nField: esp_syncsuccessformnotificationtext",
       );
@@ -253,7 +253,7 @@ export class ButtonGridHelper extends BaseHelper {
    */
   public async openSuccessDialogSync(): Promise<boolean> {
     if (!this.buttonAdvancedSetting || this.buttonAdvancedSetting.esp_syncconfirmationboxtext == null) {
-      await ExceptionLowCodeButton.displayGenericErrorNotification(
+      await ExceptionNoCodeButton.displayGenericErrorNotification(
         "Sync Confirmation Box Text Error",
         "The sync confirmation box text is empty! Please fill it on your configuration settings.",
       );
@@ -278,7 +278,7 @@ export class ButtonGridHelper extends BaseHelper {
       throw new Error("Button advanced setting is not set.");
     }
     if (this.buttonAdvancedSetting.esp_syncconfirmationboxredirecttext == null) {
-      ExceptionLowCodeButton.displayGenericErrorNotification(
+      ExceptionNoCodeButton.displayGenericErrorNotification(
         "Sync Confirmation Box Redirect Text Error",
         "The sync confirmation box redirect text is empty! Please fill it on your configuration settings.",
       );
