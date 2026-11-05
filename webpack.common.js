@@ -25,7 +25,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].js",
-    library: ["LCB"],
+    library: ["NCB"],
     libraryTarget: "var",
   },
 };
